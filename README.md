@@ -23,6 +23,7 @@ Playbook exemplo
 ----------------
 
     - hosts: all
+    
       roles:
          - { role: supervisord }
 

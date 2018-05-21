@@ -14,6 +14,27 @@ jobs:
             docker-compose exec -T centos6 /bin/bash -lc "test -f requirements.yml && ansible-galaxy install -r requirements.yml -p roles || true"
             docker-compose exec -T centos6 /bin/bash -lc "ansible-playbook -i localhost, tests.yml -c local"
             docker-compose exec -T centos6 /bin/bash -lc "ansible -i localhost, -c local all -m setup --tree . &>/dev/null"
-            docker-compose exec -T centos6 /bin/bash -lc "sleep 60"
             docker-compose exec -T centos6 /bin/bash -lc "goss --vars localhost -g goss.yml validate"
             docker-compose stop centos6
+
+      - run:
+          name: "[ CentOS 7 ]: Run tests"
+          command: |
+            docker-compose up -d centos7
+            docker-compose exec -T centos7 /bin/bash -lc "ln -nfs roles/test/*.yml ."
+            docker-compose exec -T centos7 /bin/bash -lc "test -f requirements.yml && ansible-galaxy install -r requirements.yml -p roles || true"
+            docker-compose exec -T centos7 /bin/bash -lc "ansible-playbook -i localhost, tests.yml -c local"
+            docker-compose exec -T centos7 /bin/bash -lc "ansible -i localhost, -c local all -m setup --tree . &>/dev/null"
+            docker-compose exec -T centos7 /bin/bash -lc "goss --vars localhost -g goss.yml validate"
+            docker-compose stop centos7
+            
+      - run:
+          name: "[ Debian 9 ]: Run tests"
+          command: |
+            docker-compose up -d debian9
+            docker-compose exec -T debian9 /bin/bash -lc "ln -nfs roles/test/*.yml ."
+            docker-compose exec -T debian9 /bin/bash -lc "test -f requirements.yml && ansible-galaxy install -r requirements.yml -p roles || true"
+            docker-compose exec -T debian9 /bin/bash -lc "ansible-playbook -i localhost, tests.yml -c local"
+            docker-compose exec -T debian9 /bin/bash -lc "ansible -i localhost, -c local all -m setup --tree . &>/dev/null"
+            docker-compose exec -T debian9 /bin/bash -lc "goss --vars localhost -g goss.yml validate"
+            docker-compose stop debian9
