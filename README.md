@@ -34,4 +34,4 @@ BSD
 Author Information
 ------------------
 
-Esta role foi desenvolvida por Thiago Freitas (thiago.freitas@rivendel.com.br) em 03/2018
+Esta role foi desenvolvida por Thiago Freitas (deadcow@archlinux.com.br) em 03/2018
