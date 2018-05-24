@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "[ CentOS 6 ]: Run tests"
+          name: "distribution=centos6"
           command: |
             docker-compose up -d centos6
             docker-compose exec -T centos6 /bin/bash -lc "ln -nfs roles/test/*.yml ."
@@ -18,7 +18,7 @@ jobs:
             docker-compose stop centos6
 
       - run:
-          name: "[ CentOS 7 ]: Run tests"
+          name: "distribution=centos7"
           command: |
             docker-compose up -d centos7
             docker-compose exec -T centos7 /bin/bash -lc "ln -nfs roles/test/*.yml ."
@@ -29,7 +29,7 @@ jobs:
             docker-compose stop centos7
             
       - run:
-          name: "[ Debian 9 ]: Run tests"
+          name: "distribution=debian9"
           command: |
             docker-compose up -d debian9
             docker-compose exec -T debian9 /bin/bash -lc "ln -nfs roles/test/*.yml ."
