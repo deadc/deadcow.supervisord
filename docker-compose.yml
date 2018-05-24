@@ -10,6 +10,7 @@
       volumes:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
         - .:/ansible/roles/test
+      privileged: true
 
     centos7:
       image: deadc/docker-ansible-centos7
@@ -20,6 +21,7 @@
       volumes:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
         - .:/ansible/roles/test
+      privileged: true
 
     debian9:
       image: deadc/docker-ansible-debian9
@@ -30,3 +32,4 @@
       volumes:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
         - .:/ansible/roles/test
+      privileged: true
