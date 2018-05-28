@@ -1,7 +1,7 @@
 Supervisord
 =========
 
-[![CircleCI](https://circleci.com/gh/deadc/deadcow.supervisord/tree/master.svg?style=shield)](https://circleci.com/gh/deadc/deadcow.supervisord/tree/master)
+[![Travis-CI](https://travis-ci.org/deadc/deadcow.supervisord.svg?branch=master)](https://travis-ci.org/deadc/deadcow.supervisord)
 
 Supervisor é um sistema que permite aos seus usuários monitorar e controlar uma série de processos em sistemas operacionais UNIX like.
 
