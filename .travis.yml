@@ -2,7 +2,6 @@
   sudo: required
   services:
     - docker
-    - docker-compose
 
   env:
     - distro: centos6
