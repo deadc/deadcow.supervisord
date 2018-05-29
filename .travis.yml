@@ -1,12 +1,14 @@
 ---
+  language: bash
   sudo: required
   services:
     - docker
 
   env:
-    - distro: centos6
-    - distro: centos7
-    - distro: debian9
+    matrix:
+      - distro: centos6
+      - distro: centos7
+      - distro: debian9
 
   script:
     - docker-compose up -d ${distro}
@@ -14,5 +16,5 @@
     - docker-compose exec -T ${distro} /bin/bash -lc "test -f requirements.yml && ansible-galaxy install -r requirements.yml -p roles || true"
     - docker-compose exec -T ${distro} /bin/bash -lc "ansible-playbook -i localhost, tests.yml -c local"
     - docker-compose exec -T ${distro} /bin/bash -lc "ansible -i localhost, -c local all -m setup --tree . &>/dev/null"
-    - docker-compose exec -T ${distro} /bin/bash -lc "goss --vars localhost -g goss.yml validate --retry-timeout 90s --sleep 15s"
+    - docker-compose exec -T ${distro} /bin/bash -lc "goss --vars localhost -g goss.yml validate --retry-timeout 60s --sleep 5s"
     - docker-compose stop ${distro}

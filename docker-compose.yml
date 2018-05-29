@@ -11,6 +11,8 @@
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
         - .:/ansible/roles/test
       privileged: true
+      extra_hosts:
+        - "localhost.localdomain:127.0.0.1"
 
     centos7:
       image: deadc/docker-ansible-centos7
@@ -33,3 +35,16 @@
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
         - .:/ansible/roles/test
       privileged: true
+
+    amazon1:
+      image: deadc/docker-ansible-amazon1
+      cap_add:
+        - SYS_ADMIN
+      security_opt:
+        - seccomp:unconfined
+      volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        - .:/ansible/roles/test
+      privileged: true
+      extra_hosts:
+        - "localhost.localdomain:127.0.0.1"
